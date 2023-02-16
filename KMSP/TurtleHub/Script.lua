@@ -15,6 +15,8 @@ local ui = Library:CreateWindow()
 
 
 local Tab_1 = ui:new("Main")
+local Tab_5 = ui:new("Hatch / Egg")
+local Tab_6 = ui:new("Auto Skill")
 local Tab_2 = ui:new("Player")
 local Tab_3 = ui:new("Visual")
 local Tab_4 = ui:new("Misc")
@@ -111,7 +113,41 @@ Tab_1:CreateToggle("auto damage", false, function(state)
     end
 end)
 
-Tab_1:CreateDropdown("Auto Egg", {"No egg","1","2","3","4","5",}, function(currentOption)
+Tab_1:CreateToggle("Ride Pet", false, function(state)
+local args = {
+    [1] = state
+}
+
+
+game:GetService("ReplicatedStorage").Remote.Pet.PetRide:FireServer(unpack(args))
+end)
+
+Tab_1:CreateToggle("Hug Princess", false, function(state)
+local args = {
+    [1] = state
+}
+
+
+game:GetService("ReplicatedStorage").Remote.Princess.PrincessHug:FireServer(unpack(args))
+end)
+
+Tab_1:CreateButton("Equip best sword / weapon", function()
+game:GetService("ReplicatedStorage").Remote.Weapon.EquipBest:FireServer()
+end)
+
+Tab_1:CreateButton("Join Prepare", function()
+game:GetService("ReplicatedStorage").Remote.Battle.JoinPrepare:FireServer()
+end)
+
+Tab_1:CreateButton("Exit Prepare", function()
+game:GetService("ReplicatedStorage").Remote.Battle.ExitPrepare:FireServer()
+end)
+
+Tab_1:CreateButton("Exit Battle", function()
+game:GetService("ReplicatedStorage").Remote.Battle.ExitBattle:FireServer()
+end)
+
+Tab_5:CreateDropdown("Auto Egg", {"No egg","1","2","3","4","5",}, function(currentOption)
     if currentOption == "No egg" then
         AutoEgg = false
     else
@@ -127,7 +163,7 @@ Tab_1:CreateDropdown("Auto Egg", {"No egg","1","2","3","4","5",}, function(curre
     end
 end)
 
-Tab_1:CreateDropdown("Auto Skill", {"No skill","Health","Attack","Speed","Luck"}, function(currentOption)
+Tab_6:CreateDropdown("Auto Skill", {"No skill","Health","Attack","Speed","Luck"}, function(currentOption)
     if currentOption == "No skill" then
         UpgradeSkill = false
     else
