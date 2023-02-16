@@ -6,6 +6,7 @@ local WaveFarm = true
 local BringWaveFarm = true
 local UpgradeSkill = true
 local AutoEgg = true
+local autoDamage = true
 
 -- kill monster to save princess
 
@@ -98,6 +99,18 @@ Tab_1:CreateToggle("Autofarm Waves (bring)", false, function(state)
     end
 end)
 
+Tab_1:CreateToggle("auto damage", false, function(state)
+    if state then
+        autoDamage = true
+        while autoDamage == true do
+            wait(0.01)
+            game:GetService("ReplicatedStorage").Remote.Weapon.TakeDamage:FireServer()
+        end
+    else
+        autoDamage = false
+    end
+end)
+
 Tab_1:CreateDropdown("Auto Egg", {"No egg","1","2","3","4","5",}, function(currentOption)
     if currentOption == "No egg" then
         AutoEgg = false
@@ -140,6 +153,27 @@ end)
 
 Tab_2:CreateBox("Hip Height", "Height number", function(s)
 Players.LocalPlayer.Character.Humanoid.HipHeight = s
+end)
+
+Tab_2:CreateBox("Enemy hitbox", "number", function(s)
+_G.HeadSize = s
+        _G.Disabled = true
+ 
+        game:GetService('RunService').RenderStepped:connect(function()
+            if _G.Disabled then
+                    for i,v in pairs(game.Workspace.Waves:GetDescendants()) do
+        if v.Name == "HumanoidRootPart" then
+                        pcall(function()
+                            v.Size = Vector3.new(_G.HeadSize,_G.HeadSize,_G.HeadSize)
+                            v.Transparency = 0.7
+                            v.BrickColor = BrickColor.new("Really Red")
+                            v.Material = "Neon"
+                            v.CanCollide = false
+                        end)
+                    end
+                end
+            end
+        end)
 end)
 
 --// Visual Contents \\--
