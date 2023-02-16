@@ -3,6 +3,7 @@ local Players = game:GetService("Players")
 local ReplicatedStorage = game:GetService("ReplicatedStorage")
 local Workspace = game:GetService("Workspace")
 local WaveFarm = true
+local BringWaveFarm = true
 local UpgradeSkill = true
 local AutoEgg = true
 
@@ -23,6 +24,18 @@ function Damage()
     for i,v in pairs(game.Workspace.Waves:GetDescendants()) do
         if v.Name == "HumanoidRootPart" then
                     game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = v.CFrame * CFrame.new(0,0,1)
+                    wait(0.1)
+                    for i = 1,100 do
+                    game:GetService("ReplicatedStorage").Remote.Weapon.TakeDamage:FireServer()
+                end
+            end
+        end
+    end
+
+function Magic_Damage()
+    for i,v in pairs(game.Workspace.Waves:GetDescendants()) do
+        if v.Name == "HumanoidRootPart" then
+                    v.CFrame = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame * CFrame.new(0,0,1)
                     wait(0.1)
                     for i = 1,100 do
                     game:GetService("ReplicatedStorage").Remote.Weapon.TakeDamage:FireServer()
@@ -59,7 +72,7 @@ end
 
 
 --// Main Contents \\--
-Tab_1:CreateToggle("Autofarm Waves", false, function(state)
+Tab_1:CreateToggle("Autofarm Waves (teleport)", false, function(state)
     if state then
         WaveFarm = true
         while WaveFarm == true do
@@ -68,6 +81,18 @@ Tab_1:CreateToggle("Autofarm Waves", false, function(state)
         end
     else
         WaveFarm = false
+    end
+end)
+
+Tab_1:CreateToggle("Autofarm Waves (bring)", false, function(state)
+    if state then
+        BringWaveFarm = true
+        while WaveFarm == true do
+            wait(0.01)
+            Magic_Damage()
+        end
+    else
+        BringWaveFarm = false
     end
 end)
 
@@ -118,10 +143,11 @@ Tab_3:CreateButton("Fullbright", function()
 end)
 
 --// Misc Contents \\--
-Tab_4:CreateButton("Anti-Kick", function()
+Tab_4:CreateButton("Anti-AFK", function()
     AntiAFK()
 end)
 
-Tab_4:CreateButton("Perspective Watcher", function()    loadstring(game:HttpGet('https://raw.githubusercontent.com/Gravity-0/CCAMERAv4.0/mainB/CCAMv5.0.lua'))()
+Tab_4:CreateButton("Perspective Watcher", function()    
+loadstring(game:HttpGet('https://raw.githubusercontent.com/Gravity-0/CCAMERAv4.0/mainB/CCAMv5.0.lua'))()
 end)
 -- # test
