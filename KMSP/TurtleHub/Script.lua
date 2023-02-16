@@ -18,6 +18,8 @@ local Tab_2 = ui:new("Player")
 local Tab_3 = ui:new("Visual")
 local Tab_4 = ui:new("Misc")
 
+Tab_1:Ping()
+Tab_1:FPS()
 
 --// Main Functions \\--
 function Damage()
