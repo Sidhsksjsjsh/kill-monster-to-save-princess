@@ -138,6 +138,9 @@ Tab_2:CreateSlider("JumoPower", {min = 50, max = 350, default = 16}, function(s)
     Players.LocalPlayer.Character.Humanoid.UseJumpPower = true
 end)
 
+Tab_2:CreateBox("Hip Height", "Height number", function(s)
+Players.LocalPlayer.Character.Humanoid.HipHeight = s
+end)
 
 --// Visual Contents \\--
 Tab_3:CreateButton("Fullbright", function()
