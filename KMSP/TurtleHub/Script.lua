@@ -155,7 +155,7 @@ Tab_2:CreateBox("Hip Height", "Height number", function(s)
 Players.LocalPlayer.Character.Humanoid.HipHeight = s
 end)
 
-Tab_2:CreateBox("Enemy hitbox", "number", function(s)
+Tab_2:CreateBox("Enemy hitbox (invisible)", "number", function(s)
 _G.HeadSize = s
         _G.Disabled = true
  
@@ -165,7 +165,7 @@ _G.HeadSize = s
         if v.Name == "HumanoidRootPart" then
                         pcall(function()
                             v.Size = Vector3.new(_G.HeadSize,_G.HeadSize,_G.HeadSize)
-                            v.Transparency = 0.7
+                            v.Transparency = 100
                             v.BrickColor = BrickColor.new("Really Red")
                             v.Material = "Neon"
                             v.CanCollide = false
