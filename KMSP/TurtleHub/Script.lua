@@ -141,8 +141,7 @@ local args = {
 game:GetService("ReplicatedStorage").Remote.Pet.PetRide:FireServer(unpack(args))
 end)
 
-Tab_7:CreateToggle("Hug Princess (auto)", false, function(state)
-if state then
+Tab_7:CreateToggle("Hug Princess (permanent) (auto)", false, function(state)
 local function LoopHugPrincess()
 local args = {
     [1] = true
@@ -152,17 +151,6 @@ local args = {
 game:GetService("ReplicatedStorage").Remote.Princess.PrincessHug:FireServer(unpack(args))
 end
     _Loop = RunService.Stepped:Connect(LoopHugPrincess)
-else
-if _Loop then
-        _Loop:Disconnect()
-        local _o = {
-    [1] = false
-}
-
-
-game:GetService("ReplicatedStorage").Remote.Princess.PrincessHug:FireServer(unpack(_o))
-end
-end
 end)
 
 Tab_7:CreateDropdown("Equip princess", {"Circle","Katie","Echo","Gina","Bonnie","Crystal","Anna","Freya","Isabelle","Zora","Cervine"}, function(princess)
@@ -212,62 +200,6 @@ end
 end
 end
 end
-end
-end
-end)
-
-Tab_7:CreateToggle("Equip & Claim princess (auto)", false, function(state)
-if state then
-local function _EquipAndClaim()
-     if EquipPrincess == "Circle" then -- claim & equip
-      ClaimPrincess(1001)
-      EquipPrincess(1001)
-     elseif EquipPrincess == "Katie" then
-      ClaimPrincess(1002)
-      EquipPrincess(1002)
-     elseif EquipPrincess == "Echo" then
-      ClaimPrincess(1003)
-      EquipPrincess(1003)
-     elseif EquipPrincess == "Gina" then
-      ClaimPrincess(1004)
-      EquipPrincess(1004)
-     elseif EquipPrincess == "Bonnie" then
-      ClaimPrincess(1005)
-      EquipPrincess(1005)
-     elseif EquipPrincess == "Crystal" then
-      ClaimPrincess(1006)
-      EquipPrincess(1006)
-     elseif EquipPrincess == "Anna" then
-      ClaimPrincess(1007)
-      EquipPrincess(1007)
-     elseif EquipPrincess == "Freya" then
-      ClaimPrincess(1008)
-      EquipPrincess(1008)
-     elseif EquipPrincess == "Isabelle" then
-      ClaimPrincess(1009)
-      EquipPrincess(1009)
-     elseif EquipPrincess == "Zora" then
-      ClaimPrincess(1010)
-      EquipPrincess(1010)
-     elseif EquipPrincess == "Bonnie" then
-      ClaimPrincess(1011)
-      EquipPrincess(1011)
-end
-end
-end
-end
-end
-end
-end
-end
-end
-end
-end
-end
-   _Function = RunService.Stepped:Connect(_EquipAndClaim)
-else
-if _Function then
-        _Function:Disconnect()
 end
 end
 end)
