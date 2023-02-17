@@ -303,8 +303,12 @@ Tab_4:CreateButton("Perspective Watcher", function()
 loadstring(game:HttpGet('https://raw.githubusercontent.com/Gravity-0/CCAMERAv4.0/mainB/CCAMv5.0.lua'))()
 end)
 
-Tab_4:CreateButton("dex", function()
+Tab_4:CreateButton("dex V3", function()
 loadstring(game:HttpGet("https://raw.githubusercontent.com/peyton2465/Dex/master/out.lua"))()
+end)
+
+Tab_4:CreateButton("dex V4", function()
+getobjects("rbxassetid://10055842438")[1]
 end)
 
 -- # test
