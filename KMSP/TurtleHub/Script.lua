@@ -309,18 +309,7 @@ loadstring(game:HttpGet("https://raw.githubusercontent.com/peyton2465/Dex/master
 end)
 
 Tab_4:CreateButton("dex V4", function()
-local getobjects = function(a)
-        local Objects = {}
-        if a then
-            local b = InsertService:LoadLocalAsset(a)
-            if b then 
-                table.insert(Objects, b) 
-            end
-        end
-        return Objects
-    end
-
-getobjects("rbxassetid://10055842438")[1]
+loadstring(game:GetObjects("rbxassetid://10055842438")[1].Source)()
 end)
 
 -- # test
