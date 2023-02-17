@@ -132,7 +132,7 @@ Tab_1:CreateToggle("auto damage", false, function(state)
     end
 end)
 
-Tab_1:CreateToggle("Ride Pet", false, function(state)
+Tab_1:CreateButton("Ride Pet (Single click)", function()
 local args = {
     [1] = state
 }
@@ -141,15 +141,13 @@ local args = {
 game:GetService("ReplicatedStorage").Remote.Pet.PetRide:FireServer(unpack(args))
 end)
 
-Tab_7:CreateButton("Hug Princess (Permanent) (auto)", function()
-RunService.RenderStepped:Connect(function()
+Tab_7:CreateButton("Hug Princess (Single click)", function()
 local args = {
     [1] = true
 }
 
 
 game:GetService("ReplicatedStorage").Remote.Princess.PrincessHug:FireServer(unpack(args))
-end)
 end)
 
 Tab_1:CreateButton("Equip best sword / weapon", function()
