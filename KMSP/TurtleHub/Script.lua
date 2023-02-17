@@ -22,6 +22,7 @@ local Tab_7 = ui:new("princess")
 local Tab_2 = ui:new("Player")
 local Tab_3 = ui:new("Visual")
 local Tab_4 = ui:new("Misc")
+local Tab_8 = ui:new("Daily Reward")
 
 Tab_1:Ping()
 Tab_1:FPS()
@@ -78,6 +79,13 @@ local args = {
 
 
 game:GetService("ReplicatedStorage").Remote.Princess.PrincessEquip:FireServer(unpack(args))
+wait()
+local Hug = {
+    [1] = true
+}
+
+
+game:GetService("ReplicatedStorage").Remote.Princess.PrincessHug:FireServer(unpack(Hug))
 end
 
 --// Visual Functions \\--
@@ -150,6 +158,56 @@ local args = {
 game:GetService("ReplicatedStorage").Remote.Princess.PrincessHug:FireServer(unpack(args))
 end)
 
+Tab_7:CreateButton("Mage / Healing Team", function()
+EquipPrincess(1006)
+wait(0.1)
+EquipPrincess(1001)
+wait(0.2)
+EquipPrincess(1003)
+end)
+
+Tab_7:CreateButton("use all Princess", function()
+EquipPrincess(1001)
+EquipPrincess(1002)
+EquipPrincess(1003)
+EquipPrincess(1004)
+EquipPrincess(1005)
+EquipPrincess(1006)
+EquipPrincess(1007)
+EquipPrincess(1008)
+EquipPrincess(1009)
+EquipPrincess(1010)
+EquipPrincess(1011)
+end)
+
+Tab_7:CreateButton("Claim all Princess", function()
+ClaimPrincess(1001)
+ClaimPrincess(1002)
+ClaimPrincess(1003)
+ClaimPrincess(1004)
+ClaimPrincess(1005)
+ClaimPrincess(1006)
+ClaimPrincess(1007)
+ClaimPrincess(1008)
+ClaimPrincess(1009)
+ClaimPrincess(1010)
+ClaimPrincess(1011)
+end)
+
+Tab_8:CreateButton("Claim Daily Gems", function()
+game:GetService("ReplicatedStorage").Remote.Shop.TryGetFreeGem:FireServer()
+end)
+
+Tab_8:CreateButton("Claim Daily Day Login (1-7 Days)", function()
+local DailyRoutine = {"1", "2", "3", "4", "5", "6", "7"}
+local Reward_V = {
+    [1] = 2 -- ??
+}
+
+
+game:GetService("ReplicatedStorage").Remote.Reward.DailyReward:InvokeServer(unpack(Reward_V))
+end)
+
 Tab_1:CreateButton("Equip best sword / weapon", function()
 game:GetService("ReplicatedStorage").Remote.Weapon.EquipBest:FireServer()
 end)
@@ -166,7 +224,7 @@ Tab_1:CreateButton("Exit Battle", function()
 game:GetService("ReplicatedStorage").Remote.Battle.ExitBattle:FireServer()
 end)
 
-Tab_5:CreateDropdown("Auto Egg", {"No egg","1","2","3","4","5",}, function(currentOption)
+Tab_5:CreateDropdown("Auto Egg", {"No egg","1","2","3","4","5"}, function(currentOption)
     if currentOption == "No egg" then
         AutoEgg = false
     else
