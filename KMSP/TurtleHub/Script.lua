@@ -201,7 +201,7 @@ end)
 Tab_8:CreateButton("Claim Daily Day Login (1-7 Days)", function()
 local DailyRoutine = {"1", "2", "3", "4", "5", "6", "7"}
 local Reward_V = {
-    [1] = 2 -- ??
+    [1] = DailyRoutine[math.random(1, #DailyRoutine)] -- ??
 }
 
 
