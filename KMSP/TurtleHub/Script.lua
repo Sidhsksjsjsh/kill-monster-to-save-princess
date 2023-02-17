@@ -142,16 +142,13 @@ game:GetService("ReplicatedStorage").Remote.Pet.PetRide:FireServer(unpack(args))
 end)
 
 Tab_7:CreateToggle("Hug Princess (permanent) (auto)", false, function(state)
-function LoopHugPrincess()
+RunService.RenderStepped:Connect(function()
 local args = {
     [1] = true
 }
 
 
 game:GetService("ReplicatedStorage").Remote.Princess.PrincessHug:FireServer(unpack(args))
-end
-RunService.RenderStepped:Connect(function()
-LoopHugPrincess()
 end)
 end)
 
@@ -193,16 +190,6 @@ Tab_7:CreateButton("Equip & Claim princess (single click)", function()
      elseif EquipPrincess == "Bonnie" then
       ClaimPrincess(1011)
       EquipPrincess(1011)
-end
-end
-end
-end
-end
-end
-end
-end
-end
-end
 end
 end)
 
