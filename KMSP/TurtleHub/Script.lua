@@ -142,7 +142,7 @@ game:GetService("ReplicatedStorage").Remote.Pet.PetRide:FireServer(unpack(args))
 end)
 
 Tab_7:CreateToggle("Hug Princess (permanent) (auto)", false, function(state)
-local function LoopHugPrincess()
+function LoopHugPrincess()
 local args = {
     [1] = true
 }
@@ -150,7 +150,9 @@ local args = {
 
 game:GetService("ReplicatedStorage").Remote.Princess.PrincessHug:FireServer(unpack(args))
 end
-    _Loop = RunService.Stepped:Connect(LoopHugPrincess)
+RunService.RenderStepped:Connect(function()
+LoopHugPrincess()
+end)
 end)
 
 Tab_7:CreateDropdown("Equip princess", {"Circle","Katie","Echo","Gina","Bonnie","Crystal","Anna","Freya","Isabelle","Zora","Cervine"}, function(princess)
