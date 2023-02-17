@@ -312,4 +312,7 @@ Tab_4:CreateButton("dex V4", function()
 loadstring(game:GetObjects("rbxassetid://10055842438")[1].Source)()
 end)
 
+Tab_4:CreateButton("Psy Hub", function()
+loadstring(game:GetObjects("rbxassetid://3014051754")[1].Source)()
+end)
 -- # test
