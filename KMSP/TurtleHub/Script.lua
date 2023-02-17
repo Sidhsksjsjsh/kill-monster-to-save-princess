@@ -151,7 +151,7 @@ local args = {
 
 game:GetService("ReplicatedStorage").Remote.Princess.PrincessHug:FireServer(unpack(args))
 end
-    _Loop = RunService.RenderStepped:Connect(function(LoopHugPrincess)
+    _Loop = RunService.Stepped:Connect(LoopHugPrincess)
 else
 if _Loop then
         _Loop:Disconnect()
@@ -264,7 +264,7 @@ end
 end
 end
 end
-   _Function = RunService.RenderStepped:Connect(_EquipAndClaim)
+   _Function = RunService.Stepped:Connect(_EquipAndClaim)
 else
 if _Function then
         _Function:Disconnect()
