@@ -27,6 +27,8 @@ local Tab_8 = ui:new("Daily Reward")
 
 Tab_1:Ping()
 Tab_1:FPS()
+Tab_1:TimePlayed()
+Tab_1:UTC()
 
 --// Main Functions \\--
 function Damage()
