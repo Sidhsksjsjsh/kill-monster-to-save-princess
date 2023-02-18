@@ -145,7 +145,7 @@ end)
 
 Tab_1:CreateButton("Ride Pet (Single click)", function()
 local args = {
-    [1] = state
+    [1] = true
 }
 
 
@@ -311,7 +311,7 @@ loadstring(game:HttpGet("https://raw.githubusercontent.com/peyton2465/Dex/master
 end)
 
 Tab_4:CreateButton("dex V4", function()
-loadstring(game:GetObjects("rbxassetid://10055842438")[1].Source)()
+loadstring(game:GetObjects("rbxassetid://10055842438")[1])()
 end)
 
 Tab_4:CreateButton("Psy Hub", function()
